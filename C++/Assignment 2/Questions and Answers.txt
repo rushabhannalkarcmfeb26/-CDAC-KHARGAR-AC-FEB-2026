@@ -1,0 +1,93 @@
+1.2 Why must initialization happen before assignment?
+
+Initialisation ensures the object starts with a value, while assignment only changes value after the object exists. Without initialisation, the members may contain garbage values if accessed before assignment.
+
+
+1.2 When is initialization preferred over assignment?
+
+Initialisation is preferred over assignment when we want to ensure correctness and clarity in object construction.
+
+2.2 Explain how reference variables act as aliases and how that affects swapByReference(). 
+
+Reference variables acts as alias  means they don't create a new copy of variable but instead provide another name for same variable with same memory location. When we call swapByReference() any changes made to these will change the original values.
+
+3.2.a.  Two differences between pointer and reference.
+
+Pointer can be changed to point to different variables during its lifetime.
+
+Reference is bound to a variable at initialisation and cannot be changed.
+
+Pointer can be a nullptr and requires dereferencing
+to access the value.
+
+Reference cannot be null; it must always refer to a valid object. We can directly access the value without dereferencing.
+
+
+ b. Why references cannot be reseated but pointers can 
+ 
+Reference is bound to a variable at initialisation and cannot be reseated, because it is an alias for the variable itself and reseating it will change the value of variable itself.
+
+
+c. Why references cannot be NULL
+
+Reference is bound to an existing variable at the moment of its creation. It is simply another name for a valid object. If references were allowed to be null it would lead to undefined behaviour since every access would assume a void object exists.
+
+
+4.3.a.  Why constructors are not called when using malloc 
+
+
+malloc allocates a raw block of memory of requested size. It simply reserves bytes and returns a pointer to beginning of that block. In C++ new operator allocates memory and calls constructor of the object which ensures the object is properly initialised before use.
+
+
+
+
+ b. Why new is preferred in C++ 
+ 
+When new is performed in C++ memory gets allocated for a object and constructor gets called which ensures the object is properly initialised before use.
+
+
+c. Difference in return types and initialization 
+
+return types specifies what type of value they return.
+constructors do not have a return type. Their purpose is to initialise objects, not return values.
+
+
+d.  Why malloc cannot initialize complex types 
+
+malloc only allocates a raw block of memory of the requested size. It has no knowledge of C++ objects, their constructors, or initialisation rules. It doesn't call constructors, the allocated memory remains uninitialized, which can lead to undefined behaviour if used directly.
+
+
+5.2.a.  When does compiler generate a default constructor? 
+
+Compiler generates a default constructor if no constructor is explicitly defined in your class.
+
+
+b. When does it NOT generate one? 
+
+1. When a constructor is explicitly defined in your class.
+2. When a default constructor is deleted.
+
+c. Can constructors be overloaded?
+
+Yes, constructors can be overloaded in C++, just like functions. This allows flexibility.
+
+6.3.1. Why must const members be initialized in initializer list?
+
+Const members must be initialised in initialiser list because it cannot be modified once the object is constructed. Assignment inside the constructor body happens after the object is created, which is too late for a const its value must be already fixed. The initialiser list runs before the constructor body hence it is defined in initializer list.
+
+
+ 
+2. What happens if you try to assign the value of a const member inside constructor body? 
+
+If you try to assign a value to a const member inside the constructor body, the compiler will throw an error. 
+
+
+3. Why is initializer list faster than assignment?
+
+Because of the order in which object constructions happens in C++:
+
+1. Objects member are created using their default constructors.
+2. Inside constructor body, you assign new values to those members.
+3.In initialiser list, member are directly initialized with given values before the constructor runs.
+There is only one step i.e. direct initialization.
+

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f9f9f9;
+        }
+
+        .signup-card {
+            background: white;
+            padding: 40px;
+            width: 400px;
+            border: 2px solid #58a6ff; /* The blue border from your image */
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 40px;
+            font-family: 'Times New Roman', serif; /* Serif font for the title */
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        /* This creates the underlined look */
+        .input-group input {
+            width: 100%;
+            border: none;
+            border-bottom: 1.5px solid #888;
+            padding: 10px 0;
+            font-size: 16px;
+            outline: none;
+            color: #555;
+        }
+
+        .input-group input::placeholder {
+            color: #777;
+        }
+
+        .login-link {
+            font-size: 14px;
+            color: #333;
+            margin: 20px 0;
+        }
+
+        .login-link b {
+            cursor: pointer;
+        }
+
+        .signup-btn {
+            background-color: #222;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .error-msg {
+            color: #ff4d4d;
+            font-size: 12px;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="signup-card">
+        <h1>Sign Up</h1>
+
+        <form>
+            <div class="input-group">
+                <input type="text" placeholder="First Name">
+            </div>
+            <div class="input-group">
+                <input type="text" placeholder="Last Name">
+            </div>
+            <div class="input-group">
+                <input type="email" placeholder="Email">
+            </div>
+            <div class="input-group">
+                <input type="password" placeholder="Password">
+            </div>
+
+            <p class="login-link">Already a member? <b>Log In</b></p>
+
+            <button type="submit" class="signup-btn">Sign up</button>
+        </form>
+
+        <p class="error-msg">
+            If an error occurs when filling a form, a message will show here.
+        </p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>About John Doe</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="navbar">
+  <div class="logo">John Doe</div>
+  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="signin.html">Sign In</a>
+    <a href="signup.html">Sign Up</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>About John Doe</h1>
+  <p>John was a kind soul who inspired everyone around him.</p>
+  <p>He loved technology, music, and helping people.</p>
+</div>
+
+<footer>
+  <p>Forever remembered ❤️</p>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("active");
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+
+<html>
+<head>
+  <title>John Doe Memorial</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico">
+</head>
+
+<body>
+
+<div class="navbar">
+  <div class="logo">John Doe</div>
+
+  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+
+    <div class="dropdown">
+      <a href="#">Account ▾</a>
+      <div class="dropdown-content">
+        <a href="signin.html">Sign In</a>
+        <a href="signup.html">Sign Up</a>
+      </div>
+    </div>
+
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<div class="marquee">
+  <marquee>In loving memory of John Doe (1990 - Forever in our hearts)</marquee>
+</div>
+
+<div class="hero">
+  <h1>Welcome to John Doe Memorial</h1>
+  <p>A tribute website created with love and memories.</p>
+ <a href="https://www.lamborghini.com/en-en" target="_blank">
+  <button class="btn">Visit Memories 🚗</button>
+</a>
+
+  <h2>Lamborghini Gallery</h2>
+
+  <img src="D:\WPT\Assignment 2\hero.webp"
+       width="300">
+
+  <img src="D:\WPT\Assignment 2\hero1.jpg"
+       width="300">
+
+  <img src="D:\WPT\Assignment 2\hero2.jpg"
+       width="300">
+
+</div>
+
+<footer>
+  <p>Contact: johndoe@email.com | +91 99999 99999</p>
+  <p>Follow: Facebook | Instagram | Twitter</p>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("active");
+}
+</script>
+
+</body>
+</html>

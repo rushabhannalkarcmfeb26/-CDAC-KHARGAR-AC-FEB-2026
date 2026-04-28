@@ -1,0 +1,55 @@
+
+<html>
+<head>
+    <title>Form Display</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: antiquewhite;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #000;
+            width: 300px;
+            text-align: center; /* Center align text */
+            margin-left: auto;
+            margin-right: auto; /* Center the box itself */
+        }
+    </style>
+</head>
+<body>
+
+    <h2 align="center">User Form</h2>
+
+    <form id="myForm" onsubmit="return displayData()" align="center">
+        First Name: <input type="text" id="fname"><br><br>
+        Last Name: <input type="text" id="lname"><br><br>
+        Contact No: <input type="text" id="contact"><br><br>
+        Email ID: <input type="email" id="email"><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <div class="output" id="result"></div>
+
+    <script>
+        function displayData() {
+            var firstName = document.getElementById("fname").value;
+            var lastName = document.getElementById("lname").value;
+            var contact = document.getElementById("contact").value;
+            var email = document.getElementById("email").value;
+
+            document.getElementById("result").innerHTML =
+                "<h3>Entered Details:</h3>" +
+                "First Name: " + firstName + "<br>" +
+                "Last Name: " + lastName + "<br>" +
+                "Contact No: " + contact + "<br>" +
+                "Email ID: " + email;
+
+            return false;
+        }
+    </script>
+
+</body>
+</html>

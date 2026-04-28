@@ -1,0 +1,50 @@
+
+<html>
+<head>
+    <title>Exam Center Selection</title>
+    <style>
+        .container {
+            text-align: center;   
+            margin-top: 100px;    
+        }
+
+        select, button {
+            display: block;
+            margin: 10px auto;    
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Select Exam Center</h2>
+
+        <select id="centerList">
+            <option>Delhi</option>
+            <option>Mumbai</option>
+            <option>Pune</option>
+            <option>Bangalore</option>
+            <option>Chennai</option>
+            <option>Kolkata</option>
+        </select>
+
+        <button onclick="removeCenter()">Remove Selected Center</button>
+    </div>
+
+    <script>
+        function removeCenter() {
+            var list = document.getElementById("centerList");
+            var selectedIndex = list.selectedIndex;
+
+            if (selectedIndex !== -1) {
+                var removedCity = list.options[selectedIndex].text;
+                list.remove(selectedIndex);
+                alert(removedCity + " center removed successfully!");
+            } else {
+                alert("Please select a center to remove");
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fetch Data Simulation</title>
+</head>
+<body>
+    <h2>Check the console for simulated response</h2>
+
+    <script>
+        // Function to simulate network request
+        function fetchData(callback) {
+            console.log("Fetching data");
+
+            setTimeout(() => {
+                const data = "This is Server Data";
+                callback(data);
+            }, 2000); // 2-second delay
+        }
+
+        // Calling the function with a callback
+        fetchData((data) => {
+            console.log("This is the response from the server: " + data + " and this is the callback function");
+            console.log(data);
+        });
+    </script>
+</body>
+</html>

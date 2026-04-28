@@ -1,0 +1,45 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chained Callbacks Example</title>
+</head>
+
+<body>
+    <h2>Check the console for output</h2>
+
+    <script>
+        // fetchData with error handling
+        function fetchData(callback) {
+            console.log("Fetching data");
+
+            setTimeout(() => {
+                const data = { id: 1, name: "Rushabh Annalkar" };
+                callback(null, data);
+            }, 2000);
+
+        }
+        function processData(data, callback) {
+            console.log("Processing data ... ");
+                setTimeout(() => {
+                    const processed = {
+                        ...data,
+                        name: data.name.toUpperCase()
+                    };  
+                    callback(processed);
+                }, 1000);
+            }
+
+            fetchData((err, data) => {
+                    if(err) {
+                        console.error(err);
+                    } else {
+                        processData(data, (result) => {
+                    console.log("Processed Result:", result);
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

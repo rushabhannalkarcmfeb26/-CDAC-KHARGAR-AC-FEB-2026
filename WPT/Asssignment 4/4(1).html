@@ -1,0 +1,26 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Process Data Example</title>
+</head>
+<body>
+    <h2>Check the console for output</h2>
+
+    <script>
+        // Callback function
+        function toUpperCase(str) {
+            return str.toUpperCase();
+        }
+
+        // Main function
+        function processData(input, callback) {
+            const result = callback(input);
+            console.log(result);
+        }
+
+        // Calling the function
+        processData("hi! this is rushabh. so nice to meet you!", toUpperCase);
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fetch Data with Error Handling</title>
+</head>
+<body>
+    <h2>Check the console for output</h2>
+
+    <script>
+        // Function to simulate network request with error handling
+        function fetchData( callback) {
+            console.log("Fetching data");
+
+            setTimeout(function() {
+                const isError = Math.random() < 0.5; // randomly simulate error
+
+                if (isError) {
+                    callback("Error: Failed to fetch data", null);
+                } else {
+                    const response = { id: 141, name: "Rushabh Annalkar" };
+                    callback(null, response);
+                }
+            }, 2000);
+        }
+
+        // Calling the function with error handling in callback
+        fetchData(function(error,data) {
+            if (error) {
+                console.error(error);
+            } else {
+                console.log("Data received:", data);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>forEachElement Example</title>
+</head>
+<body>
+    <h2>Check the console for output</h2>
+
+    <script>
+        // Function that accepts an array and a callback
+        function forEachElement(arr, callback) {
+            for (let i = 0; i < arr.length; i++) {
+                callback(arr[i], i);
+            }
+        }
+
+        // Calling the function with an anonymous callback
+        const numbers = [8,9,5,2,3];
+
+        forEachElement(numbers, function(element, index) {
+            const result = element * 2;
+            console.log("Index:", index, "Value:", result);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Shopping Cart</title>
+</head>
+<body>
+
+    <h2>Shopping Cart</h2>
+
+    <input type="text" id="itemName" placeholder="Item Name">
+    <input type="number" id="itemPrice" placeholder="Price">
+    <input type="number" id="itemQty" placeholder="Quantity">
+    <button onclick="addItem()">Add Item</button>
+
+    <h3>Cart Items:</h3>
+    <ul id="cartList"></ul>
+
+    <h3 id="totalDisplay"></h3>
+
+    <script>
+        // Constant value
+        const TAX_RATE = 0.18;
+
+        // Cart array
+        let cart = [];
+
+        // Add item function
+        function addItem() {
+            let name = document.getElementById("itemName").value;
+            let price = parseFloat(document.getElementById("itemPrice").value);
+            let qty = parseInt(document.getElementById("itemQty").value);
+
+            if (!name || isNaN(price) || isNaN(qty)) {
+                alert("Please enter valid details");
+                return;
+            }
+
+            cart.push({ name, price, qty });
+
+            displayCart();
+        }
+
+        // Display cart
+        function displayCart() {
+            let list = document.getElementById("cartList");
+            list.innerHTML = "";
+
+            let subtotal = 0;
+
+            for (var i = 0; i < cart.length; i++) { // using var
+                let item = cart[i];
+                subtotal += item.price * item.qty;
+
+                let li = document.createElement("li");
+                li.textContent = item.name + " - ₹" + item.price + " x " + item.qty;
+                list.appendChild(li);
+            }
+
+            let tax = subtotal * TAX_RATE;
+            let total = subtotal + tax;
+
+            document.getElementById("totalDisplay").innerHTML =
+                "Subtotal: ₹" + subtotal +
+                "<br>Tax (18%): ₹" + tax.toFixed(2) +
+                "<br><b>Total: ₹" + total.toFixed(2) + "</b>";
+        }
+    </script>
+
+</body>
+</html>

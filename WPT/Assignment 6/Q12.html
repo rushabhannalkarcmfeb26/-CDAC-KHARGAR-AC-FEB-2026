@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Promise Example</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .message { color: darkgreen; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Promise Resolves After 3 Seconds</h2>
+  <p id="output" class="message"></p>
+
+  <script>
+    // Create a promise that resolves after 3 seconds
+    const delayedPromise = new Promise((resolve) => {
+      setTimeout(() => {
+        resolve("Promise resolved after 3 seconds!");
+      }, 3000);
+    });
+
+    // Handle the resolved value
+    delayedPromise.then(message => {
+      document.getElementById("output").textContent = message;
+    });
+  </script>
+</body>
+</html>

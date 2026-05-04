@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Merge Arrays with Spread Operator</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .result { color: green; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Merge Fruit Arrays</h2>
+  <p>Array 1: <span id="arr1"></span></p>
+  <p>Array 2: <span id="arr2"></span></p>
+  <p>Merged Array: <span id="merged" class="result"></span></p>
+
+  <script>
+    // Two arrays of fruits
+    const fruits1 = ["Apple", "Banana", "Mango"];
+    const fruits2 = ["Orange", "Pineapple", "Grapes"];
+
+    // Merge using spread operator
+    const mergedFruits = [...fruits1, ...fruits2];
+
+    // Display results
+    document.getElementById("arr1").textContent = fruits1.join(", ");
+    document.getElementById("arr2").textContent = fruits2.join(", ");
+    document.getElementById("merged").textContent = mergedFruits.join(", ");
+  </script>
+</body>
+</html>

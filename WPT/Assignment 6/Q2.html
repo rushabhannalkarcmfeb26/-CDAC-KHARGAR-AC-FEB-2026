@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rectangle Area Calculator</title>
+</head>
+<body>
+    <h2>Calculate Area of Rectangle</h2>
+    <label for="length">Length:</label>
+    <input type="number" id="length" />
+    <br />
+    <label for="width">Width:</label>
+    <input type="number" id="width" />
+    <br /><br />
+    <button onclick="calculateAreaRegular()">Calculate with Regular Function</button>
+    <button onclick="calculateAreaArrow()">Calculate with Arrow Function</button>
+    <h3 id="result"></h3>
+
+    <script>
+        // Regular function to calculate area
+        function calculateArea(length, width) {
+            return length * width; // Return product of length and width
+        }
+
+        // Arrow function to calculate area
+        const calculateAreaArrowFunc = (length, width) => {
+            return length * width; // Return product of length and width
+        };
+
+        // Function to get input values and display result using regular function
+        function calculateAreaRegular() {
+            const length = Number(document.getElementById('length').value); // Get length input
+            const width = Number(document.getElementById('width').value); // Get width input
+            const area = calculateArea(length, width); // Calculate area
+            document.getElementById('result').textContent = "Area (Regular Function): " + area; // Show result
+        }
+
+        // Function to get input values and display result using arrow function
+        function calculateAreaArrow() {
+            const length = Number(document.getElementById('length').value); // Get length input
+            const width = Number(document.getElementById('width').value); // Get width input
+            const area = calculateAreaArrowFunc(length, width); // Calculate area
+            document.getElementById('result').textContent = "Area (Arrow Function): " + area; // Show result
+        }
+    </script>
+</body>
+</html>

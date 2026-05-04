@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Array Destructuring</title>
+</head>
+<body>
+  <p id="first"></p> <!-- Paragraph to show first number -->
+  <p id="second"></p> <!-- Paragraph to show second number -->
+
+  <script>
+    const numbers = [5, 10, 15, 20]; 
+    // Create an array of numbers
+
+    const [first, second] = numbers; 
+    // Use array destructuring to extract the first two numbers
+
+    document.getElementById('first').textContent = `First number: ${first}`; 
+    // Display the first number in HTML
+
+    document.getElementById('second').textContent = `Second number: ${second}`; 
+    // Display the second number in HTML
+  </script>
+</body>
+</html>

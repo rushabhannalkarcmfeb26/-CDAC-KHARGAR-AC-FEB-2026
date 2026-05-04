@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Filter Even Numbers</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .result { color: green; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Filter Even Numbers from Array</h2>
+  <p>Original Array: <span id="original"></span></p>
+  <p>Even Numbers: <span id="evens" class="result"></span></p>
+
+  <script>
+    // Given array
+    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    // Use filter to get even numbers
+    const evenNumbers = numbers.filter(num => num % 2 === 0);
+
+    // Display results
+    document.getElementById("original").textContent = numbers.join(", ");
+    document.getElementById("evens").textContent = evenNumbers.join(", ");
+  </script>
+</body>
+</html>

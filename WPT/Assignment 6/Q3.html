@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Details</title>
+</head>
+<body>
+    <h2>Book Information</h2>
+    <div id="bookDetails"></div>
+
+    <script>
+        // Define Book class with properties and method
+        class Book {
+            constructor(title, author, year) {
+                this.title = title; // Book title
+                this.author = author; // Book author
+                this.year = year; // Publication year
+            }
+
+            // Method to return book details as HTML string
+            displayDetails() {
+                return `<p><strong>Title:</strong> ${this.title}</p>
+                        <p><strong>Author:</strong> ${this.author}</p>
+                        <p><strong>Year:</strong> ${this.year}</p>`;
+            }
+        }
+
+        // Create a book instance
+        const myBook = new Book("The Great Gatsby", "F. Scott Fitzgerald", 1925);
+        const anotherBook = new Book("To Kill a Mockingbird", "Harper Lee", 1960);
+        // Display book details in the HTML div
+        document.getElementById('bookDetails').innerHTML = myBook.displayDetails();
+        document.getElementById('bookDetails').innerHTML += anotherBook.displayDetails();   
+    </script>
+</body>
+</html>

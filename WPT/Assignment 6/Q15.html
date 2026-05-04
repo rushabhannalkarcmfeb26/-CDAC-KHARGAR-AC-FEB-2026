@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Filter, Map, Reduce Example</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .result { color: darkblue; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Process Array with Filter, Map, Reduce</h2>
+  <p>Original Array: <span id="original"></span></p>
+  <p>Total (Even → Doubled → Summed): <span id="total" class="result"></span></p>
+
+  <script>
+    // Function that processes the array
+    function processArray(numbers) {
+      return numbers
+        .filter(num => num % 2 === 0)   // keep even numbers
+        .map(num => num * 2)            // double them
+        .reduce((acc, num) => acc + num, 0); // sum them
+    }
+
+    // Example usage
+    const arr = [1, 2, 3, 4, 5, 6];
+    const total = processArray(arr);
+
+    // Display results
+    document.getElementById("original").textContent = arr.join(", ");
+    document.getElementById("total").textContent = total;
+  </script>
+</body>
+</html>

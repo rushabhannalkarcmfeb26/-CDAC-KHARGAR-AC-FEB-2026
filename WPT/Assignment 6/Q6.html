@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Map Method Example</title>
+</head>
+<body>
+
+    <h2>Names Length using map()</h2>
+    <button onclick="showLengths()">Show Lengths</button>
+
+    <p id="output"></p>
+
+    <script>
+        function showLengths() {
+            // Original array
+            const names = ["Amit", "Priya", "Rahul", "Sneha","Rushabh"];
+
+            // Using map to get lengths
+            const lengths = names.map(function(name) {
+                return name.length;
+            });
+
+            // Display result
+            document.getElementById("output").innerHTML =
+                "Names: " + names.join(", ") + "<br>" +
+                "Lengths: " + lengths.join(", ");
+        }
+    </script>
+
+</body>
+</html>

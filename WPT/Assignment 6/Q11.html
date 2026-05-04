@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Callback with Delay</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .message { color: darkblue; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Execute Callback After Delay</h2>
+  <p id="output" class="message"></p>
+
+  <script>
+    // Function that accepts a callback and delay
+    function executeAfterDelay(callback, delay) {
+      setTimeout(callback, delay);
+    }
+
+    // Example usage
+    executeAfterDelay(() => {
+      document.getElementById("output").textContent = "Callback executed after 3 seconds!";
+    }, 3000); // 3000 ms = 3 seconds
+  </script>
+</body>
+</html>

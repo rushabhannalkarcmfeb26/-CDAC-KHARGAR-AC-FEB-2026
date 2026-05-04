@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Closure Example</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .result { color: darkred; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Closure Demonstration</h2>
+  <p>Counter Value: <span id="counter" class="result"></span></p>
+  <button onclick="increment()">Increment</button>
+
+  <script>
+    // Outer function that returns an inner function
+    function createCounter() {
+      let count = 0; // private variable
+
+      return function() {
+        count++;
+        return count;
+      };
+    }
+
+    // Create a counter using closure
+    const counter = createCounter();
+
+    // Function to update UI
+    function increment() {
+      document.getElementById("counter").textContent = counter();
+    }
+  </script>
+</body>
+</html>

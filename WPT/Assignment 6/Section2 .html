@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Personal Budget Tracker</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    input, button { margin: 5px; }
+    #expenseList p { margin: 3px 0; }
+    #successMessage { color: green; }
+    #resetBtn { margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Personal Budget Tracker</h1>
+
+  <form id="expenseForm">
+    <input type="text" id="desc" placeholder="Description" required />
+    <input type="number" id="amt" placeholder="Amount" required min="0" />
+    <input type="date" id="date" required />
+    <button type="submit">Add Expense</button>
+  </form>
+
+  <button id="showAbove20Btn">Show Expenses Above $20</button>
+  <button id="showDescriptionsBtn">Show Expense Descriptions</button>
+  <button id="resetBtn">Show All Expenses</button>
+
+  <div id="expenseList"></div>
+  <p id="totalExpenses"></p>
+  <p id="successMessage"></p>
+
+  <script>
+    let expenses = [];
+
+    // Closure to maintain total expense state (optional)
+    function createTotalTracker() {
+      let total = 0;
+      return function(amount) {
+        total += amount;
+        return total;
+      };
+    }
+    const updateTotal = createTotalTracker();
+
+    // Add expenses with spread operator and callback
+    function addExpenses(callback, ...newExpenses) {
+      expenses = [...expenses, ...newExpenses];
+      newExpenses.forEach(exp => updateTotal(exp.amount));
+      if (callback) callback("Expenses added successfully!");
+    }
+
+    // Display all expenses
+    function displayExpenses() {
+      const expenseListDiv = document.getElementById('expenseList');
+      expenseListDiv.innerHTML = expenses.map(({ description, amount, date }) =>
+        `<p>${description} - $${amount} on ${date}</p>`
+      ).join('');
+      updateTotalDisplay(calculateTotal());
+    }
+
+    // Calculate total expenses
+    function calculateTotal() {
+      return expenses.reduce((sum, { amount }) => sum + amount, 0);
+    }
+
+    // Update total expenses display
+    function updateTotalDisplay(total) {
+      document.getElementById('totalExpenses').textContent = `Total Expenses: $${total}`;
+    }
+
+    // Show expenses above $20
+    function displayAbove20() {
+      const filtered = expenses.filter(({ amount }) => amount > 20);
+      const expenseListDiv = document.getElementById('expenseList');
+      expenseListDiv.innerHTML = filtered.map(({ description, amount }) =>
+        `<p>${description} - $${amount}</p>`
+      ).join('');
+      const filteredTotal = filtered.reduce((sum, e) => sum + e.amount, 0);
+      updateTotalDisplay(filteredTotal);
+      clearSuccessMessage();
+    }
+
+    // Show all descriptions on page
+    function displayDescriptions() {
+      const descriptions = expenses.map(({ description }) => description);
+      const expenseListDiv = document.getElementById('expenseList');
+      expenseListDiv.innerHTML = `<p><strong>Descriptions:</strong> ${descriptions.join(", ")}</p>`;
+      updateTotalDisplay(calculateTotal());
+      clearSuccessMessage();
+    }
+
+    // Show success message
+    function showSuccess(message) {
+      const msgElem = document.getElementById('successMessage');
+      msgElem.textContent = message;
+      setTimeout(() => { msgElem.textContent = ""; }, 3000);
+    }
+
+    // Clear success message
+    function clearSuccessMessage() {
+      document.getElementById('successMessage').textContent = "";
+    }
+
+    // Reset to show all expenses
+    function showAllExpenses() {
+      displayExpenses();
+      clearSuccessMessage();
+    }
+
+    // Event listeners
+    document.getElementById('expenseForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const desc = document.getElementById('desc').value.trim();
+      const amt = Number(document.getElementById('amt').value);
+      const date = document.getElementById('date').value;
+      if (desc && amt >= 0 && date) {
+        addExpenses(showSuccess, { description: desc, amount: amt, date });
+        displayExpenses();
+        e.target.reset();
+      }
+    });
+
+    document.getElementById('showAbove20Btn').addEventListener('click', displayAbove20);
+    document.getElementById('showDescriptionsBtn').addEventListener('click', displayDescriptions);
+    document.getElementById('resetBtn').addEventListener('click', showAllExpenses);
+
+    // Initialize with empty list
+    displayExpenses();
+  </script>
+</body>
+</html>
